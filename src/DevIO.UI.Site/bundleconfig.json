@@ -5,5 +5,12 @@
       "wwwroot/lib/boostrap/css/bootstrap.css",
       "wwwroot/css/site.css"
     ]
+  },
+  {
+    "outputFileName": "wwwroot/js/site_bundle.min.js",
+    "inputFiles": [
+      "wwwroot/lib/jquery/jquery.js",
+      "wwwroot/js/site.js"
+    ]
   }
 ]
