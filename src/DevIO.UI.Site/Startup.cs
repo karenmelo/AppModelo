@@ -31,14 +31,25 @@ namespace DevIO.UI.Site
 
             app.UseRouting();
 
-            app.UseMvc(routes => { routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");});
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
+            });
 
             //app.UseEndpoints(endpoints =>
             //{
-            //    endpoints.MapGet("/", async context =>
-            //    {
-            //        await context.Response.WriteAsync("Hello World!");
-            //    });
+            //    //endpoints.MapGet("/", async context =>
+            //    //{
+            //    //    await context.Response.WriteAsync("Hello World!");
+            //    //});
+            //    endpoints.MapControllerRoute(
+            //            name: "areas",
+            //            pattern: "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+
+            //    endpoints.MapControllerRoute("default", "{controller=Home}/{action=Index}/{id?}");
+
             //});
         }
     }
