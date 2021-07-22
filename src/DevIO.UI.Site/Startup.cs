@@ -1,3 +1,4 @@
+using DevIO.UI.Site.Data;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Razor;
@@ -21,6 +22,8 @@ namespace DevIO.UI.Site
             });
 
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
+
+            services.AddTransient<IPedidoRepository, PedidoRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -37,7 +40,9 @@ namespace DevIO.UI.Site
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                //routes.MapRoute("areas", "{area:exists}/{controller=Home}/{action=Index}/{id?}");
+                routes.MapAreaRoute("AreaProdutos", "Produtos", "Produtos/{controller=Cadastro}/{action=Index}/{id?}");
+                routes.MapAreaRoute("AreaVendas", "Vendas", "Vendas/{controller=Pedidos}/{action=Index}/{id?}");
                 routes.MapRoute("default", "{controller=Home}/{action=Index}/{id?}");
 
             });
