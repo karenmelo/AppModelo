@@ -21,6 +21,9 @@ namespace DevIO.UI.Site
                 options.AreaViewLocationFormats.Add("/Views/Shared/{0}.cshtml");
             });
 
+            //configurando o DbContext
+            services.AddDbContext<MeuDbContext>();
+
             services.AddMvc(options => options.EnableEndpointRouting = false).SetCompatibilityVersion(Microsoft.AspNetCore.Mvc.CompatibilityVersion.Version_2_2);
 
             services.AddTransient<IPedidoRepository, PedidoRepository>();
